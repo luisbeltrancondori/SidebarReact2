@@ -6,8 +6,13 @@ import {
   AiOutlineHome,
   AiOutlineApartment,
   AiOutlineSetting,
+  AiOutlineUser,
+  AiOutlineShoppingCart,
+  AiOutlineShopping,
+  AiOutlineApple,
+  AiOutlineUserAdd,
 } from "react-icons/ai";
-import { MdOutlineAnalytics, MdLogout } from "react-icons/md";
+import { MdOutlineAnalytics, MdLogout, MdOutlineReport, MdOutlineTask, MdOutlineAddTask, MdOutlineAddChart, MdOutlineShowChart, MdOutlineBarChart } from "react-icons/md";
 import { NavLink } from "react-router-dom";
 import { useContext } from "react";
 import { ThemeContext } from "../App";
@@ -29,7 +34,7 @@ export function Sidebar({ sidebarOpen, setSidebarOpen }) {
         <div className="imgcontent">
           <img src={logo} />
         </div>
-        <h2>codigo369</h2>
+        <h2>Sistema de Ventas</h2>
       </div>
       {linksArray.map(({ icon, label, to }) => (
         <div className="LinkContainer" key={label}>
@@ -56,7 +61,7 @@ export function Sidebar({ sidebarOpen, setSidebarOpen }) {
       ))}
       <Divider />
       <div className="Themecontent">
-        {sidebarOpen && <span className="titletheme">Dark mode</span>}
+        {sidebarOpen && <span className="titletheme">Modo Oscuro</span>}
         <div className="Togglecontent">
           <div className="grid theme-container">
             <div className="content">
@@ -86,14 +91,29 @@ const linksArray = [
     to: "/",
   },
   {
+    label: "Compras",
+    icon: <AiOutlineShoppingCart />,
+    to: "compras",
+  },
+  {
+    label: "Ventas",
+    icon: <AiOutlineShopping />,
+    to: "ventas",
+  },
+  {
     label: "Estadisticas",
     icon: <MdOutlineAnalytics />,
     to: "/estadisticas",
   },
   {
     label: "Productos",
-    icon: <AiOutlineApartment />,
+    icon: <AiOutlineApple />,
     to: "/productos",
+  },
+  {
+    label: "Clientes",
+    icon: <AiOutlineUserAdd />,
+    to: "/clientes",
   },
   {
     label: "Diagramas",
@@ -102,8 +122,13 @@ const linksArray = [
   },
   {
     label: "Reportes",
-    icon: <MdOutlineAnalytics />,
+    icon: <MdOutlineBarChart />,
     to: "/reportes",
+  },
+  {
+    label: "Inventario",
+    icon: <MdOutlineAddTask />,
+    to: "/inventario",
   },
 ];
 const secondarylinksArray = [
@@ -258,7 +283,7 @@ const Container = styled.div`
               right: 0;
               bottom: 0;
               background: ${({ themeUse }) =>
-                themeUse === "light" ? v.lightcheckbox : v.checkbox};
+    themeUse === "light" ? v.lightcheckbox : v.checkbox};
 
               transition: 0.4s;
               &::before {
